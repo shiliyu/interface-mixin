@@ -18,7 +18,7 @@ public class Main {
         }
     }
 
-    public abstract class Animal implements 会跑{
+    static class Animal implements 会跑{
         String name;
 
         public Animal(String name) {
