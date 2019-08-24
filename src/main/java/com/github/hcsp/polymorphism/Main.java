@@ -1,47 +1,49 @@
 package com.github.hcsp.polymorphism;
 
 public class Main {
-    abstract static class 会跑 {
-        String name;
+    interface 会跑 {
+        String getName();
 
-        会跑(String name) {
-            this.name = name;
-        }
-
-        String getName() {
-            return name;
-        }
-
-        void 跑() {
-            System.out.println(name + "跑啊跑啊跑");
+        default void 跑() {
+            System.out.println(getName() + "跑啊跑啊跑");
         }
     }
 
-    abstract static class 会游泳 {
-        String name;
+    interface 会游泳 {
+        String getName();
 
-        会游泳(String name) {
-            this.name = name;
-        }
-
-        String getName() {
-            return name;
-        }
-
-        void 游泳() {
-            System.out.println(name + "游啊游啊游");
+        default void 游泳() {
+            System.out.println(getName() + "游啊游啊游");
         }
     }
 
-    static class 猫 extends 会跑 {
+    abstract static class Animal {
+        private String name;
+
+        Animal(String name) {
+            this.name = name;
+        }
+
+        public String getName() {
+            return name;
+        }
+    }
+
+    static class 猫 extends Animal implements 会跑 {
         猫() {
             super("小花猫");
         }
     }
 
-    static class 鱼 extends 会游泳 {
+    static class 鱼 extends Animal implements 会游泳 {
         鱼() {
             super("鱼");
+        }
+    }
+
+    static class 乌龟 extends Animal implements 会游泳, 会跑 {
+        乌龟() {
+            super("乌龟");
         }
     }
 
